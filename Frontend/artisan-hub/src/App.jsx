@@ -97,9 +97,9 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </Typography>
       </Card>
-      <Typography color="text.secondary" sx={{ color: '#888' }}> }}>
+      <Typography color="text.secondary" sx={{ color: '#888' }}>
         Click on the Vite and React logos to learn moreVite and React logos to learn more
-      </Typography>raphy>
+      </Typography>
       <style>
         {`
           @keyframes logo-spin {s logo-spin {
