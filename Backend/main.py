@@ -60,11 +60,14 @@ def register():
         description: Internal server error
     """
         
+    if not request.is_json:
+        return jsonify({"message": "Request must be JSON"}), 400
+    
     artisan_name = request.json.get('artisan_name')
     artisan_email = request.json.get('artisan_email')
 
-    check_artisan_name = db.session.execute(db.select(Artisan).where(Artisan.name==artisan_name))
-    check_artisan_email = db.session.execute(db.select(Artisan).where(Artisan.email==artisan_email))
+    check_artisan_name = db.session.execute(db.select(Artisan).where(Artisan.name==artisan_name)).scalar()
+    check_artisan_email = db.session.execute(db.select(Artisan).where(Artisan.email==artisan_email)).scalar()
 
     if check_artisan_email:
         return jsonify({
@@ -94,7 +97,8 @@ def register():
     
     access_token = create_access_token(identity=artisan_name)
 
-    return jsonify(access_token=access_token).get_json(), 200
+    return jsonify(access_token=access_token), 200
+
 
 @app.route('/login-artisan', methods=["POST"])
 def login():

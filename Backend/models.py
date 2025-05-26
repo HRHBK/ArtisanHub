@@ -63,6 +63,7 @@ class Product(db.Model):
 
     prod_id: Mapped[int] = mapped_column(Integer, primary_key=True)
     prod_name: Mapped[str] = mapped_column(String(40), nullable=False)
+    prod_price: Mapped[int] = mapped_column(Integer, nullable=False)
 
     # relationship between customer and product
     artsian_id: Mapped[int] = mapped_column(Integer, ForeignKey('artisan.id'), nullable=False)
