@@ -11,9 +11,6 @@ CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///artisanhub.db'
 app.config['SECRET_KEY'] = 'your_secret_key'
 
-# Swaggerui cofiguration for api testing
-swagger = Swagger(app)
-
 # database configuration
 class Base(DeclarativeBase):
     pass
@@ -27,3 +24,20 @@ migrate = Migrate(app=app, db=db)
 # authentication setup
 app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
+
+# Swaggerui cofiguration for api testing
+swagger_config = {
+    "definitions": {
+        "Product": {
+            "type": "object",
+            "properties": {
+                "prod_id": {"type": "integer"},
+                "prod_name": {"type": "string"},
+                "prod_price": {"type": "integer"},
+                "prod_description": {"type": "integer"}
+            }
+        }
+    }
+}
+
+swagger = Swagger(app, config=swagger_config)
