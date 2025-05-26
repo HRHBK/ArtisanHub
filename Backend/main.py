@@ -172,7 +172,51 @@ def login():
         if check_artisan and check_password_hash(check_artisan.password, password):
             access_token = create_access_token(identity=artisan_email)
             return jsonify(access_token=access_token), 200
+        
+@app.route('/view-all-products', methods=['GET'])
+def view_products():
 
+    """Get all products
+    ---
+    tags:
+      - Products
+    description: Retrieve a list of all available products
+    produces:
+      - application/json
+    responses:
+      200:
+        description: A list of products
+        schema:
+          type: object
+          properties:
+            products:
+              type: array
+              items:
+                $ref: '#/definitions/Product'
+      500:
+        description: Internal server error
+    """
+
+    all_products = db.session.execute(db.select(Product)).scalars.all()
+
+    if len(all_products) > 0:
+        return jsonify({
+            "products":[product.to_json() for product in all_products]
+            }), 200
+    
+    return jsonify(products="No product exists"), 404
+
+@app.route('/view-product/<prod_id:int>', methods=["GET"])
+def view_product(prod_id):
+
+    product = db.get_or_404(Product, prod_id)
+
+    if product:
+        return jsonify({
+            "product": product.to_json()
+        }), 200
+    
+    return jsonify(product="product not found"), 404
 
 if __name__ == "__main__":
     with app.app_context():
