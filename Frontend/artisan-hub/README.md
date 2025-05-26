@@ -79,7 +79,12 @@ artisan-hub/
 - **Use Framer Motion** for animations where needed.
 - **Write clear, concise commit messages.**
 - **Lint your code** before pushing.
-- **Open a pull request** for all changes. Describe your changes clearly.
+- **Follow a mobile-first approach:**  
+  Design and test all components and layouts for mobile devices first, then enhance for larger screens using Material UI's responsive system (`sx` prop, breakpoints, etc.).
+- **Create your own branch** for any feature or fix you are working on.  
+  Do **not** commit directly to the `main` branch.
+- **Open a pull request** from your branch to `main` when your changes are ready.  
+  Clearly describe your changes in the PR.
 
 ## Troubleshooting
 
