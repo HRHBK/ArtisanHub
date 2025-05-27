@@ -81,7 +81,7 @@ function App() {
       </Typography>
       <Card sx={{ p: 4, mt: 2, mb: 2 }}>
         <Button
-          variant="contained"
+          variant="outlined"
           onClick={() => setCount((count) => count + 1)}
           sx={{
             borderRadius: 2,
