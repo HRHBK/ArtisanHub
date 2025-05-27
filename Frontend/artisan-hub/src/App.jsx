@@ -1,20 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// src/App.jsx
+import React from 'react';
+import { Routes, Route, Outlet, useLocation, useNavigate, Link } from 'react-router-dom';
 import {
-  Box,
-  Button,
+  AppBar,
+  Toolbar,
   Typography,
-  Card,
-  Link,
-  Stack,
-} from '@mui/material'
-import { motion } from 'framer-motion'
+  Button,
+  Box,
+  Container,
+} from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from './hooks/useAuth'; // Assuming you have this
+import BuyerDashboard from './Pages/BuyerDashboard';
+import SellerDashboard from './Pages/SellerDashboard';
+import OrderDetailsPage from './Pages/OrderDetailsPage';
+import AdminDashboard from './Pages/AdminDashboard';
+import EscrowCheckoutPage from './Pages/EscrowCheckoutPage';
+import DisputePage from './Pages/DisputePage';
+import HomePage from './Pages/Home'; // Example home page
+import DisputeForm from './Components/Escrow/DisputeForm';
+import OrderCard from './Components/Escrow/OrderCard';
+import OrderStatusStepper from './Components/Escrow/OrderStatusStepper';
 
-function App() {
-  const [count, setCount] = useState(0)
 
+
+const App = () => {
   return (
+<<<<<<< HEAD
     <Box
       sx={{
         width: '100vw', // Occupy full viewport width
@@ -109,7 +121,12 @@ function App() {
         `}
       </style>
     </Box>
+=======
+    <>
+    <HomePage />
+    </>
+>>>>>>> 2206e5b5324fa5b3368e42674a160c53de2ebe30
   )
 }
 
-export default  App
+export default App
